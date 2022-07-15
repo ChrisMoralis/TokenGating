@@ -16,7 +16,7 @@ yarn
 
 ### 2. Add Environment Variables
 
-Copy `.env.example` file and rename it `.env`, then fill in the following info with your Moralis server details.
+Create a `.env` file, then fill in the following info with your Moralis server details.
 
 ```
 MORALIS_APP_ID=xxx
@@ -39,9 +39,23 @@ yarn start
 You can use any method to call the `/secret` REST API. Here is an example using CURL.
 
 ```sh
-curl http://localhost:3000/secret \
+curl http://localhost:5454/secret \
     -H 'Content-Type: application/json' \
     -d '{"sessionToken":"<session-token-input>"}'
+```
+
+Here's another using fetch.
+
+```
+const sessionToken = await Moralis.User.current().get("sessionToken");
+const rawResponse = await fetch(`http://localhost:5454/secret`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ sessionToken }),
+  });
 ```
 
 ## License
