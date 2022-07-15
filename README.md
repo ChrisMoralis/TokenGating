@@ -5,9 +5,9 @@ This is a simple demo for using Moralis SDK for token gating website content bas
 ## Quickstart
 
 1. Install npm packages
-2. Update Moralis server credentials in main.js and .env (express server)
-3. Edit the Moralis API code
-4. Run server (cd into express directory and npm start)
+2. Get Moralis server (appId and server url)
+3. Edit the Moralis API code in main.js
+4. Run server (follow readme for the express server in the '\_express-server' directory)
 5. Run application (I used the LiveServer extension)
 
 ## Instructions
