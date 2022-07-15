@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Moralis Token Gating Example</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/img/favicon.png"
+    />
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- ======== CSS here ======== -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+    <!-- ======== preloader start ======== -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- preloader end -->
+
+    <!-- ======== header start ======== -->
+    <header class="header">
+      <div class="navbar-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="index.html">
+                  <h2 style="color: white">TOKEN GATING</h2>
+                </a>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                </button>
+
+                <div
+                  class="collapse navbar-collapse sub-menu-bar"
+                  id="navbarSupportedContent"
+                >
+                  <ul id="nav" class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                      <a class="page-scroll active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="page-scroll" href="#features">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="page-scroll" href="#about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="javascript:void(0)">Clients</a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- navbar collapse -->
+              </nav>
+              <!-- navbar -->
+            </div>
+          </div>
+          <!-- row -->
+        </div>
+        <!-- container -->
+      </div>
+      <!-- navbar area -->
+    </header>
+    <!-- ======== header end ======== -->
+    <!-- ======== hero-section start ======== -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center position-relative">
+          <div class="col-lg-6">
+            <div class="hero-content">
+              <h1 class="wow fadeInUp" data-wow-delay=".4s">
+                Blockchain Verification Made Easy
+              </h1>
+              <p class="wow fadeInUp" data-wow-delay=".6s">
+                Simple node js server that can be used to token gate access to
+                content based on the holdings of certain assets. You can think
+                of it as a membership verification system but using the
+                blockchain instead of a database.
+              </p>
+              <a
+                href="javascript:void(0)"
+                class="main-btn border-btn btn-hover wow fadeInUp"
+                data-wow-delay=".6s"
+                id="btn-login"
+                >Member Signin</a
+              >
+              <a
+                href="javascript:void(0)"
+                class="main-btn border-btn btn-hover wow fadeInUp"
+                data-wow-delay=".6s"
+                id="btn-logout"
+                >Member Signout</a
+              >
+              <a href="#features" class="scroll-bottom">
+                <i class="lni lni-arrow-down"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
+              <img src="assets/img/theNFT.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== hero-section end ======== -->
+    <div id="loginContent" style="text-align: center"></div>
+
+    <!-- ======== about-section start ======== -->
+    <section id="goldContent" class="about-section pt-40"></section>
+    <!-- ======== about-section end ======== -->
+
+    <!-- ======== about2-section start ======== -->
+    <section id="silverContent" class="about-section pt-40">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-6 col-lg-6">
+            <div class="about-content">
+              <div class="section-title mb-30">
+                <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
+                  SILVER MEMBER ACCESS
+                </h2>
+                <p class="wow fadeInUp" data-wow-delay=".4s">
+                  Here is the protect content for being a Silver member. Lorem
+                  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                  nonumy eirmod tempor invidunt ut labore et dolore magna
+                  aliquyam erat, sed diam voluptua.
+                </p>
+              </div>
+              <ul>
+                <li>Quick Access</li>
+                <li>Easily to Manage</li>
+                <li>24/7 Support</li>
+              </ul>
+              <a
+                href="javascript:void(0)"
+                class="main-btn btn-hover border-btn wow fadeInUp"
+                data-wow-delay=".6s"
+                >Learn More</a
+              >
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 order-first order-lg-last">
+            <div class="about-img-2">
+              <img src="assets/img/about/about-2.png" alt="" class="w-100" />
+              <img
+                src="assets/img/about/about-right-shape.svg"
+                alt=""
+                class="shape shape-1"
+              />
+              <img
+                src="assets/img/about/right-dots.svg"
+                alt=""
+                class="shape shape-2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== about2-section end ======== -->
+
+    <!-- ======== feature-section start ======== -->
+    <section id="why" class="feature-extended-section pt-100">
+      <div class="feature-extended-wrapper">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-xxl-5 col-xl-6 col-lg-8 col-md-9">
+              <div class="section-title text-center mb-60">
+                <h2 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
+                  Why Moralis
+                </h2>
+                <p class="wow fadeInUp" data-wow-delay=".4s">
+                  We have a very powerful suite of APIs to allow users to gain
+                  access to blockchain data across multiple chains
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="single-feature-extended">
+                <div class="icon">
+                  <i class="lni lni-display"></i>
+                </div>
+                <div class="content">
+                  <h3>Google Cloud</h3>
+                  <p>
+                    Use our tools from within applications deployed to Google
+                    Cloud
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-feature-extended">
+                <div class="icon">
+                  <i class="lni lni-leaf"></i>
+                </div>
+                <div class="content">
+                  <h3>Cross-Chain Compatible</h3>
+                  <p>
+                    We search Ethereum, Polygon, Binance Smart Chain, Avalanche
+                    and Solana
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-feature-extended">
+                <div class="icon">
+                  <i class="lni lni-grid-alt"></i>
+                </div>
+                <div class="content">
+                  <h3>Blockchain Verification</h3>
+                  <p>
+                    This is just one use for our APIs, imagine how many more
+                    there are
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== feature-section end ======== -->
+
+    <!-- ======== footer start ======== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="widget-wrapper">
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-6">
+              <div class="footer-widget">
+                <div class="logo mb-30">
+                  <a href="index.html"> </a>
+                </div>
+                <p class="desc mb-30 text-white">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                  dinonumy eirmod tempor invidunt.
+                </p>
+                <ul class="socials">
+                  <li>
+                    <a href="jvascript:void(0)">
+                      <i class="lni lni-facebook-filled"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="jvascript:void(0)">
+                      <i class="lni lni-twitter-filled"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="jvascript:void(0)">
+                      <i class="lni lni-instagram-filled"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="jvascript:void(0)">
+                      <i class="lni lni-linkedin-original"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-xl-2 col-lg-2 col-md-6">
+              <div class="footer-widget">
+                <h3>About Us</h3>
+                <ul class="links">
+                  <li><a href="javascript:void(0)">Home</a></li>
+                  <li><a href="javascript:void(0)">Feature</a></li>
+                  <li><a href="javascript:void(0)">About</a></li>
+                  <li><a href="javascript:void(0)">Testimonials</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-6">
+              <div class="footer-widget">
+                <h3>Features</h3>
+                <ul class="links">
+                  <li><a href="javascript:void(0)">How it works</a></li>
+                  <li><a href="javascript:void(0)">Privacy policy</a></li>
+                  <li><a href="javascript:void(0)">Terms of service</a></li>
+                  <li><a href="javascript:void(0)">Refund policy</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-6">
+              <div class="footer-widget">
+                <h3>Other Products</h3>
+                <ul class="links">
+                  <li><a href="jvascript:void(0)">Accounting Software</a></li>
+                  <li><a href="jvascript:void(0)">Billing Software</a></li>
+                  <li><a href="jvascript:void(0)">Booking System</a></li>
+                  <li><a href="jvascript:void(0)">Tracking System</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ======== footer end ======== -->
+
+    <!-- ======== scroll-top ======== -->
+    <a href="#" class="scroll-top btn-hover">
+      <i class="lni lni-chevron-up"></i>
+    </a>
+
+    <!-- ======== JS here ======== -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
